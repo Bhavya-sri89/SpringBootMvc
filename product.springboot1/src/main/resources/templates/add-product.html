@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>add product</title>
+	</head>
+	<boby>
+		<lable> Name:</lable>	
+		<input type="text" id="name" name="name" th:value="*{name}"/>
+		<p class="error" th:if="${#fields.hasErrors{'name''}" th:error="*{name}"></p><br>
+		
+		<lable>Brand:</lable>
+		<input type="text" id="name" name="brand" th:value="*{brand}"/>
+		<p class="error" th:if="${#fields.hasErrors{'brand'}" th:error="*{brand}"></p><br>
+		
+		<lable>MadeIn:</lable>
+		<input type="text" id="name" name="brand" th:value="*{madeIn}"/>
+		<p class="error" th:if="${#fields.hasErrors{'madeIn'}" th:error="*{madeIn}"></p><br>
+		
+		<lable>Price:</lable>
+		<input type="text" id="name" name="brand" th:value="*{price}"/>
+		<p class="error" th:if="${#fields.hasErrors{'price'}" th:error="*{price}"></p><br>
+			
+			<lable>discountrate:</lable>
+			<input type="text" id="discountrate" name="discountrate" th:value="*{discountrate}"/>
+			<p class="error" th:if="${#fields.hasErrors{'discountrate'}" th:error="*{discountrate}"></p><br>
+			
+			<lable>Taxrate:</lable>
+			<input type="text" id="name" name="taxrate" th:value="*{taxrate}"/>
+			<p class="error" th:if="${#fields.hasErrors{'taxrate'}" th:error="*{taxrate}"></p><br>
+				
+
+				
+
+			
+
+		
+		
+		
+				
+	</boby>
+</html>

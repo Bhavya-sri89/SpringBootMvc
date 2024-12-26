@@ -1,0 +1,9 @@
+package com.sathya.springbootmvc.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Employeeservice {
+@Autowired
+Employeerepository employeerepository();
+
+}

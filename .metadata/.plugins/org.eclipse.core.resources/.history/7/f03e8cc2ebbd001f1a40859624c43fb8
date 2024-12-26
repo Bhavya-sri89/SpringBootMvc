@@ -1,0 +1,2 @@
+spring.application.name=product.springboot1
+server.port=8081

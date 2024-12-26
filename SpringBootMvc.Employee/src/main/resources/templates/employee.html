@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Emlpoyee form</title>
+	</head>
+	<boby>
+		<h1>Employee Form</h1>
+		<form th:action="@{/saveemployee}" method="post">
+			<lable>employee Name:</lable>
+			<input type="test" name="name" required>
+			<br><br>
+			<lable>id:</lable>
+			<input type="test" name="id" required>
+			<br><br>
+			<lable>gender:</lable>
+			<input type="test" name="gender" required>
+			<br><br>
+			<lable>salary:</lable>
+			<input type="test" name="salary" required>
+			<br><br>
+			<lable>location:</lable>
+			<input type="test" name="location" required>
+			<br><br>
+			<lable>finalsalary:</lable>
+			<input type="test" name="finalsalary" required>
+			<br><br>
+			<button type="submit">saveproduct</button>
+			<button type="reset">Reset</button>
+		</form>
+	</boby>
+</html>

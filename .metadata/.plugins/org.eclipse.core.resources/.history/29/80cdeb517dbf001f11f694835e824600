@@ -1,0 +1,47 @@
+package com.sathya.springbootmvc.controller;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.sathya.springbootmvc.entity.Productentity;
+import com.sathya.springbootmvc.model.ProductModel;
+import com.sathya.springbootmvc.service.Productservice;
+
+
+@Controller
+public class Productdetails<ProductEntity> {
+	private static final String ProductModel = null;
+	@Autowired
+	Productservice productservice;
+	@PostMapping("/saveproductDetails")
+	public String saveproduct(ProductModel productModel) { 
+	Productservice.saveproductDetails(productModel);
+	return "success";
+	}
+    @GetMapping("/product")
+    public String getProductForm() {
+    	
+        return "product";  
+    }
+
+    @PostMapping("/saveproduct")
+    public String saveProductDetails(ProductModel productModel) 
+    {
+    	productservice.saveproductDetails(ProductModel productModel);
+        System.out.println(productModel);
+        return "success";  
+    }
+
+	@GetMapping("/getallproduct")
+	public String getAllproducts(Model model) {	
+		List<Productentity> products=productservice.getAllproducts();
+		modle.addAttributes("Products products");
+		return "product-list";
+	}
+	}
+

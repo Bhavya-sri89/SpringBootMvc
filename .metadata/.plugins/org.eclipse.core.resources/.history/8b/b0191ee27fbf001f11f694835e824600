@@ -1,0 +1,97 @@
+package com.sathya.springbootmvc.service;
+
+import java.security.PublicKey;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.annotation.JacksonInject.Value;
+import com.sathya.springbootmvc.entity.Productentity;
+import com.sathya.springbootmvc.model.ProductModel;
+import com.sathya.springbootmvc.repository.Productrepository;
+
+
+
+@Service
+public  class Productservice {
+
+@Autowired
+Productrepository productrepository;
+public void deleteproductbyid(Long id)
+{
+	productrepository.deleteById(id);	 
+}
+public Productentity searchbyid(Long id)
+{
+	Optional<Productentity> optionalData=productrepository.findById(id);
+	if(optionalData.isPresent())
+	{
+		Productentity product=optionalData.get();
+		return product;
+	}
+	else
+	{
+		return null;
+	}
+	}
+
+
+public List<Productentity> getproducts(){
+	List<Productentity> products= productrepository.findAll();
+	return products;
+}
+public void saveproductcontroller(ProductModel productModel)
+{
+	 	double stockvalue;
+	 	Productentity productModel;
+		stockvalue=productModel.getPrice()*productModel.getQuantity();
+	 	double discountprice;
+	 	discountprice=productModel.getPrice()*productModel.getDiscountrate()/100;
+	 	double offerprice;
+	 	offerprice=productModel.getPrice()-discountprice;
+	 	
+	 	double finalprice;
+	 	finalprice=offerprice+productModel.getTaxrate();
+	 	
+	 
+	
+	
+	Productentity productentity=new Productentity();
+	productentity.setName(productentity.getName());
+	productentity.setBrand(productentity.getBrand());
+	productentity.setMadeIn(productentity.getMadeIn());
+	productentity.setPrice(productentity.getPrice());
+	productentity.setQuantity(productentity.getQuantity());
+	productentity.setDiscountrate(productentity.getDiscountrate());
+	productentity.setTaxrate(productentity.getTaxrate());
+	productentity.setOfferprice(offerprice);
+	productentity.setFinalprice(finalprice);
+	productentity.setStockvalue(stockvalue);
+	productentity.setDiscountprice(discountprice);
+	
+	productrepository.save(productentity);
+	 
+
+	
+
+ 
+	
+
+ 
+
+	
+
+
+	
+}
+private void findAll() {
+	// TODO Auto-generated method stub
+	
+}
+
+	
+}
+
+

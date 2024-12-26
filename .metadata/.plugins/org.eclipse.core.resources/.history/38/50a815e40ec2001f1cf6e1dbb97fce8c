@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>product list</title>
+	</head>
+	<boby>
+		<div>
+			<h2>product list</h2>
+			<table border="2">
+				<thead>
+					<tr>
+						<th>Id:</th>
+						<th>Name:</th>
+						<th>Brand:</th>
+						<th>MadeIn</th>
+						<th>Price:</th>	
+						<th>Quantity:</th>
+						<th>Discountrate:</th>
+						<th>Offerprice:</th>
+						<th>Taxrate:</th>
+						<th>Discountprice</th>
+						<th>finalprice:</th>
+						<th>Stokvalue</th>
+						<th>action</th>
+					</tr>
+				</thead>
+				<tboby>
+					<tr th:each="product:${Products}">
+						<td th:text="${product.id}"></td>
+						<td th:text="${product.Name}"></td>
+						<td th:text="${product.brand}"></td>
+						<td th:text="${product.MadeIn}"></td>
+						<td th:text="${product.price}"></td>
+						<td th:text="${product.quantity}"></td>
+						<td th:text="${product.taxrate}"></td>
+						<td th:text="${product.discountrate}"></td>
+						<td th:text="${product.discountprice}"></td>
+						<td th:text="${product.offerprice}"></td>
+						<td th:text="${product.finalprice}"></td>
+						<td th:text="${product.stockvalue}"></td>
+				<td><a th:href="@{'delete/'+${product.id}}">delete</a></td>		
+					</tr>
+				</tboby>
+			</table>
+		</div>
+	</boby>
+</html>

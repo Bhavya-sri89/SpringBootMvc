@@ -1,0 +1,36 @@
+package com.sathya.springbootmvc.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sathya.springbootmvc.controller.Employee;
+import com.sathya.springbootmvc.entity.Employeeentity;
+import com.sathya.springbootmvc.repository.Employeerepository;
+
+public class Employeeservice<EmployeeEntity> {
+@Autowired
+Employeerepository employeerepository;
+
+
+ public void deleteemployeeByid(Long id)
+ {
+	 employeerepository.deleteById(id);
+ }
+  public Employeeentity searchbyid(Long id)
+  {
+	  Optional<EmployeeEntity> optionalData=employeerepository.findById(id);
+	  if(optionalData.isPresent())
+	  {
+		  EmployeeEntity employeeentity=optionalData.get();
+		  return employee;
+	  }
+	  else
+	  {
+		  return null;
+	  }
+  }
+ 
+}
+

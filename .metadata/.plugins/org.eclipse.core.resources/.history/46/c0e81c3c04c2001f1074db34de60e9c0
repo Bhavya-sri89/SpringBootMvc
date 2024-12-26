@@ -1,0 +1,105 @@
+package com.sathya.springbootmvc.service;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.sathya.springbootmvc.entity.Productentity;
+import com.sathya.springbootmvc.model.ProductModel;
+import com.sathya.springbootmvc.repository.Productrepository;
+
+
+
+@Service
+public  class Productservice {
+
+@Autowired
+Productrepository productrepository;
+
+public void deleteproductByid(Long id)
+{
+	productrepository.deleteById(id);	 
+}
+
+public Productentity searchbyid(Long id)
+{
+	Optional<Productentity> optionalData=productrepository.findById(id);
+	if(optionalData.isPresent())
+	{
+		Productentity product=optionalData.get();
+		return product;
+	}
+	else
+	{
+		return null;
+	}
+}
+public  ProductModel editbtId(Long id) {
+	{
+		Optional<Productentity> optionaldata=productrepository.findById(id);
+		ProductModel product=new ProductModel();
+		if(optionaldata.isPresent())
+		{
+			Productentity eproduct=optionaldata.get();
+			product.setName(eproduct.getName());
+			product.setBrand(eproduct.getBrand());
+			product.setMadeIn(eproduct.getMadeIn());
+			product.setPrice(eproduct.getPrice());
+			product.setQuantity(eproduct.getQuantity());
+			product.setBrand(eproduct.getBrand());
+			product.setTaxrate(eproduct.getTaxrate());
+			return product;
+		}
+		else {
+			return null;
+			
+			
+		}
+		}
+	
+}
+
+
+public List<Productentity> getallproduct(){
+	List<Productentity> products= productrepository.findAll();
+	return products;
+}
+
+public void saveproductdetails(ProductModel productModel)
+{
+	 	double stockvalue;
+		stockvalue=productModel.getPrice()*productModel.getQuantity();
+	 	double discountprice;
+	 	discountprice=productModel.getPrice()*productModel.getDiscountrate()/100;
+	 	double offerprice;
+	 	offerprice=productModel.getPrice()-discountprice;
+	 	double finalprice;
+	 	finalprice=productModel.getTaxrate()+offerprice;
+	 	
+	 
+	
+	
+	Productentity productentity=new Productentity();
+	productentity.setName(productModel.getName());
+	productentity.setBrand(productModel.getBrand());
+	productentity.setMadeIn(productModel.getMadeIn());
+	productentity.setPrice(productModel.getPrice());
+	productentity.setQuantity(productModel.getQuantity());
+	productentity.setDiscountrate(productModel.getDiscountrate());
+	productentity.setTaxrate(productModel.getTaxrate());
+	productentity.setOfferprice(offerprice);
+	productentity.setFinalprice(finalprice);
+	productentity.setStockvalue(stockvalue);
+	productentity.setDiscountprice(discountprice);
+	
+	productrepository.save(productentity);
+}
+
+	
+}
+
+

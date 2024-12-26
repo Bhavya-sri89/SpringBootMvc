@@ -1,0 +1,22 @@
+package com.sathya.springbootmvc.entity;
+
+import org.springframework.data.annotation.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Employeeentity {
+	@Id
+	private long id;
+	private String name;
+	private double Salary;
+	private char gender;
+	private String location;
+	private double hra;
+	private double da;
+	private double finalsalary;
+}

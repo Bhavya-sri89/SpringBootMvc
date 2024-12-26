@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Product form</title>
+	</head>
+	<boby>
+		<h1>Product Form</h1>
+		<form th:action:"@{/saveproduct"} method="post">
+			<lable>Product Name:</lable>
+			<input type="test" name="name" required>
+			<br><br>
+			<lable>Brand:</lable>
+			<input type="test" name="brand" required>
+			<br><br>
+			<lable>Price:</lable>
+			<input type="test" name="price" required>
+			<br><br>
+			<lable>MeadeIn:</lable>
+			<input type="test" name="MaedeIn" required>
+			<br><br>
+			<lable>Quantity:</lable>
+			<input type="test" name="quantity" required>
+			<br><br>
+			<button type="submit">saveproduct</button>
+			<button type="reset">Reset</button>
+		</form>
+	</boby>
+</html>
